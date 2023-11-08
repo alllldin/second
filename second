@@ -1,0 +1,68 @@
+<head>
+   <script type="text/javascript" src="https://frontend-test.secureprivacy.ai/script/64d3c5855410598223d0b082.js"></script>
+   </head>
+{
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Run All",
+            "presentation": {
+				"group": "maingroup",
+				"order": 1
+			},
+            "configurations": [
+                "Back End",
+                "Front End"
+            ]
+        }
+    ],
+    "configurations": [
+        {
+            "name": "Back End",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build backend",
+            "program": "${workspaceFolder}/SampleApp/BackEnd/bin/Debug/net8.0/BackEnd.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/SampleApp/BackEnd",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Front End",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build frontend",
+            "program": "${workspaceFolder}/SampleApp/FrontEnd/bin/Debug/net8.0/FrontEnd.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/SampleApp/FrontEnd",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
